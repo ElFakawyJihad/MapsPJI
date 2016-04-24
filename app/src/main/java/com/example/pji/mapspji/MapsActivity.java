@@ -21,6 +21,7 @@ import com.example.pji.mapspji.database.localisation.Localisation;
 import com.example.pji.mapspji.database.localisation.Position;
 import com.example.pji.mapspji.optionActivity.OptionActivity;
 import com.example.pji.mapspji.optionActivity.SubscriptionGroupActivity;
+import com.example.pji.mapspji.optionActivity.UnsubscribeGroupActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -102,10 +103,12 @@ public class MapsActivity extends AppCompatActivity implements
                 return true;
             }
             case R.id.desabonner:{
-               /* Intent intent=new Intent(this,AddFriendUserActivity.class);
+                Intent intent=new Intent(this, UnsubscribeGroupActivity.class);
                 intent.putExtra("user",username);
-                intent.putExtra("pass",password);
-                startActivity(intent);*/
+                intent.putExtra("raf",this.rafraichissement);
+                intent.putExtra("id",id);
+                startActivity(intent);
+                return true;
             }
             case R.id.option:{
                 Intent intent=new Intent(this, OptionActivity.class);

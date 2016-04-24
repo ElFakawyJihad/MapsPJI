@@ -36,7 +36,6 @@ public class OptionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Long temps=Long.parseLong(editRaf.getText().toString());
                 if (temps<8){
-                    Log.i("test","test");
                     Snackbar snackbar = Snackbar
                             .make(coordinator, "Temps de rafraichissement doit etre Superieur à 8 secondes", Snackbar.LENGTH_LONG);
                     snackbar.show();
@@ -52,4 +51,5 @@ public class OptionActivity extends AppCompatActivity {
         });
 
     }
+
 }

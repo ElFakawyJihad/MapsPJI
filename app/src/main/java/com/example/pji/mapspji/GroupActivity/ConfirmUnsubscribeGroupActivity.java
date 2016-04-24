@@ -3,8 +3,10 @@ package com.example.pji.mapspji.GroupActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,14 +15,12 @@ import com.example.pji.mapspji.MapsActivity;
 import com.example.pji.mapspji.R;
 import com.example.pji.mapspji.database.groupe.GroupUser;
 
-import java.sql.SQLException;
-
-public class ConfirmGroupActivity extends AppCompatActivity {
+public class ConfirmUnsubscribeGroupActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confirm_group);
+        setContentView(R.layout.activity_confirm_unsubscribe_group);
         //-------------------Recuperer les valeurs de l'Intent----
         Intent intent=getIntent();
         final String username=intent.getStringExtra("user");
@@ -32,18 +32,15 @@ public class ConfirmGroupActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         //----------------------------------------
-        //-Recuperer les vues
-        Button adherer=(Button)findViewById(R.id.adhererButton);
-        TextView confirm=(TextView)findViewById(R.id.textViewConfirmGroup);
-        //----------Faire Agir les vues----------------
-        confirm.setText("Voulez vous adherer au groupe "+nomGroupe+"?");
-        adherer.setOnClickListener(new View.OnClickListener() {
+        TextView desabonnerText=(TextView)findViewById(R.id.textViewUnsubscribeGroup);
+        desabonnerText.setText("Voulez-vous vous desabonner du groupe "+nomGroupe+" ?");
+        Button unsubscribe=(Button)findViewById(R.id.unsubscribeButton);
+        unsubscribe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    GroupUser groupUser=new GroupUser();
-                    groupUser.addInGroupe(iduser,idgroupe);
-                    Intent intent = new Intent(ConfirmGroupActivity.this, MapsActivity.class);
+                    new GroupUser().deleteInGroupe(iduser,idgroupe);
+                    Intent intent=new Intent(ConfirmUnsubscribeGroupActivity.this, MapsActivity.class);
                     intent.putExtra("user",username);
                     intent.putExtra("id",iduser);
                     intent.putExtra("raf",rafraichissement);
