@@ -44,12 +44,12 @@ public class OptionActivity extends AppCompatActivity {
                 else{
                     Intent intent=new Intent(OptionActivity.this, MapsActivity.class);
                     intent.putExtra("raf",temps*1000);
-
                     intent.putExtra("user",username);
                     intent.putExtra("id",id);
                     startActivity(intent);
                 }
             }
         });
+
     }
 }
