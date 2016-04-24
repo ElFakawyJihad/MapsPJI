@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item android:id="@+id/abonner" android:title="S' Abonner"></item>
+    <item android:id="@+id/desabonner" android:title="Se désabonner"></item>
+    <item android:id="@+id/option"  android:title="Options"/>
+    <item android:id="@+id/deconnecter" android:title="Déconnecter"/>
+
+
+
+</menu>
