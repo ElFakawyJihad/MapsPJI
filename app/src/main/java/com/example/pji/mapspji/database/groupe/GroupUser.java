@@ -56,6 +56,50 @@ public class GroupUser extends Connection {
 		String groupe = "&groupe=" + groupid;
 		this.requete.reponse(page + user + groupe);
 	}
+	/**
+	 * Les groupes possibles pour l'utilisateur pour s'abonner
+	 *
+	 * @param userid
+	 *            id de l'utilsateur en question
+	 * @return
+	 * @throws IOException
+	 */
+	public HashMap<String, Integer> getOtherGroup(int userid) throws IOException {
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		String page = "otherGroup.php";
+		String user = "?user=" + userid;
+		String reponse = this.requete.reponse(page + user);
+		Document doc = Jsoup.parse(reponse);
+		Elements element = doc.getElementsByTag("groupe");
+		int size = element.size();
+		for (int i = 0; i < size; i++) {
+			int id = Integer.parseInt(element.get(i).getElementsByTag("id").text());
+			String name = element.get(i).getElementsByTag("name").text();
+			map.put(name, id);
+		}
+		return map;
+	}
+	/**
+	 *
+	 * @param userid id de l'utilisateur
+	 * @return liste de mes groupes
+	 * @throws IOException
+	 */
+	public HashMap<String,Integer> getMyGroup(int userid) throws IOException{
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		String page = "mygroups.php";
+		String user = "?user=" + userid;
+		String reponse = this.requete.reponse(page + user);
+		Document doc = Jsoup.parse(reponse);
+		Elements element = doc.getElementsByTag("groupe");
+		int size = element.size();
+		for (int i = 0; i < size; i++) {
+			int id = Integer.parseInt(element.get(i).getElementsByTag("id").text());
+			String name = element.get(i).getElementsByTag("name").text();
+			map.put(name, id);
+		}
+		return map;
+	}
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException, UserHaveNotGroupException,
 			SQLException, UserIsInGroupException {
