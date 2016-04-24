@@ -27,6 +27,7 @@ public class ConfirmGroupActivity extends AppCompatActivity {
         final int iduser=intent.getIntExtra("id",0);
         String nomGroupe=intent.getStringExtra("nomGroupe");
         final int idgroupe= intent.getIntExtra("groupe",0);
+        final long rafraichissement = intent.getLongExtra("raf", 8000);
         //Ces deux lignes sont a rajouter pour l'envoir de requete Html seulement
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -47,6 +48,7 @@ public class ConfirmGroupActivity extends AppCompatActivity {
                     Intent intent = new Intent(ConfirmGroupActivity.this, MapsActivity.class);
                     intent.putExtra("user",username);
                     intent.putExtra("id",iduser);
+                    intent.putExtra("raf",rafraichissement);
                     startActivity(intent);
                 } catch (Exception e) {
                     e.printStackTrace();

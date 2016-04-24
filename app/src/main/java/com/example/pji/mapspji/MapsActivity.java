@@ -20,6 +20,7 @@ import com.example.pji.mapspji.database.groupe.GroupUser;
 import com.example.pji.mapspji.database.localisation.Localisation;
 import com.example.pji.mapspji.database.localisation.Position;
 import com.example.pji.mapspji.optionActivity.OptionActivity;
+import com.example.pji.mapspji.optionActivity.SubscriptionGroupActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -93,7 +94,11 @@ public class MapsActivity extends AppCompatActivity implements
         switch(item.getItemId())
         {
             case R.id.abonner: {
-
+                Intent intent=new Intent(this, SubscriptionGroupActivity.class);
+                intent.putExtra("user",username);
+                intent.putExtra("raf",this.rafraichissement);
+                intent.putExtra("id",id);
+                startActivity(intent);
                 return true;
             }
             case R.id.desabonner:{
@@ -104,7 +109,7 @@ public class MapsActivity extends AppCompatActivity implements
             }
             case R.id.option:{
                 Intent intent=new Intent(this, OptionActivity.class);
-                intent.putExtra("ref",this.rafraichissement);
+                intent.putExtra("raf",this.rafraichissement);
                 intent.putExtra("user",username);
                 intent.putExtra("id",id);
                 startActivity(intent);
@@ -198,6 +203,10 @@ public class MapsActivity extends AppCompatActivity implements
     @Override
     public void onConnectionSuspended(int i) {
         Toast.makeText(this,"Connection Suspendue",Toast.LENGTH_SHORT).show();
+    }
+    //On bloque le bouton de Retour
+    public void onBackPressed() {
+        // do nothing.
     }
     public void putUserGroupMarker()  {
         GroupUser users= null;

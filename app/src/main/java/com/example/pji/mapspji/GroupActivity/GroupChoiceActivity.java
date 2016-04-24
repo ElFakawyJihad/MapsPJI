@@ -78,7 +78,6 @@ public class GroupChoiceActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String nomGroupe=(String)parent.getItemAtPosition(position);
                 try {
-                    Log.i("Passer","Passer");
                     Group groupe = new Group();
                     //On recupere l'ensemble des groupes actuels
                     HashMap<String, Integer> map = groupe.getAllGroup();
@@ -87,7 +86,6 @@ public class GroupChoiceActivity extends AppCompatActivity {
                     Intent intent = new Intent(GroupChoiceActivity.this, ConfirmGroupActivity.class);
                     intent.putExtra("user", user);
                     intent.putExtra("id", GroupChoiceActivity.this.id);
-                    Log.i("iddddddddd",""+GroupChoiceActivity.this.id);
                     intent.putExtra("nomGroupe",nomGroupe);
                     intent.putExtra("groupe",idGroupe);
                     startActivity(intent);
