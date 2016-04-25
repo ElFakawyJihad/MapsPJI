@@ -29,7 +29,7 @@ public class OptionActivity extends AppCompatActivity {
         username=user.getStringExtra("user");
         id=user.getIntExtra("id", 0);
         final EditText editRaf=(EditText)findViewById(R.id.editTextRaf);
-        editRaf.setText(""+raf/1000);
+        editRaf.setHint(""+raf/1000);
         Button button=(Button)findViewById(R.id.buttonRaf);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

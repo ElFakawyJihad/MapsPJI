@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.pji.mapspji.ConnectActivity.LoginActivity;
+import com.example.pji.mapspji.GroupActivity.CreateGroupActivity;
 import com.example.pji.mapspji.database.exception.UserHaveNotGroupException;
 import com.example.pji.mapspji.database.groupe.GroupUser;
 import com.example.pji.mapspji.database.localisation.Localisation;
@@ -94,6 +95,14 @@ public class MapsActivity extends AppCompatActivity implements
     {
         switch(item.getItemId())
         {
+            case R.id.creer: {
+                Intent intent=new Intent(this, CreateGroupActivity.class);
+                intent.putExtra("user",username);
+                intent.putExtra("raf",this.rafraichissement);
+                intent.putExtra("id",id);
+                startActivity(intent);
+                return true;
+            }
             case R.id.abonner: {
                 Intent intent=new Intent(this, SubscriptionGroupActivity.class);
                 intent.putExtra("user",username);
@@ -120,6 +129,7 @@ public class MapsActivity extends AppCompatActivity implements
             }
             case R.id.deconnecter:{
                startActivity(new Intent(MapsActivity.this,LoginActivity.class));
+                return true;
             }
 
 

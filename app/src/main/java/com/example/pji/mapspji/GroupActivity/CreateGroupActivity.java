@@ -18,6 +18,8 @@ import com.example.pji.mapspji.database.groupe.GroupUser;
 
 public class CreateGroupActivity extends AppCompatActivity {
 
+    private long rafraichissement;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +32,7 @@ public class CreateGroupActivity extends AppCompatActivity {
         Intent intent=getIntent();
         final String user=intent.getStringExtra("user");
         final int id=intent.getIntExtra("id",0);
+        rafraichissement =intent.getLongExtra("raf",8000);
         //----------------------------------------
         final EditText nomGroupe=(EditText)findViewById(R.id.nomGroupe);
         Button buttoncreer=(Button)findViewById(R.id.creerGroupe);
@@ -49,6 +52,7 @@ public class CreateGroupActivity extends AppCompatActivity {
                         Intent intent = new Intent(CreateGroupActivity.this, MapsActivity.class);
                         intent.putExtra("user", user);
                         intent.putExtra("id", id);
+                        intent.putExtra("raf",CreateGroupActivity.this.rafraichissement);
                         startActivity(intent);
                     }catch (GroupNameIsUseException e) {
                         Snackbar.make(coordinator, "Nom de Groupe deja utilisé", Snackbar.LENGTH_LONG).show();

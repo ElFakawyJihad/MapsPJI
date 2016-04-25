@@ -2,7 +2,7 @@
 
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-
+    <item android:id="@+id/creer"  android:title="Creer Groupe"/>
     <item android:id="@+id/abonner" android:title="S' Abonner"></item>
     <item android:id="@+id/desabonner" android:title="Se désabonner"></item>
     <item android:id="@+id/option"  android:title="Options"/>
