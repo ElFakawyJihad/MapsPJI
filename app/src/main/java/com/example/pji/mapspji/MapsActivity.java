@@ -20,6 +20,7 @@ import com.example.pji.mapspji.database.exception.UserHaveNotGroupException;
 import com.example.pji.mapspji.database.groupe.GroupUser;
 import com.example.pji.mapspji.database.localisation.Localisation;
 import com.example.pji.mapspji.database.localisation.Position;
+import com.example.pji.mapspji.optionActivity.AdminActivity;
 import com.example.pji.mapspji.optionActivity.OptionActivity;
 import com.example.pji.mapspji.optionActivity.SubscriptionGroupActivity;
 import com.example.pji.mapspji.optionActivity.UnsubscribeGroupActivity;
@@ -113,6 +114,14 @@ public class MapsActivity extends AppCompatActivity implements
             }
             case R.id.desabonner:{
                 Intent intent=new Intent(this, UnsubscribeGroupActivity.class);
+                intent.putExtra("user",username);
+                intent.putExtra("raf",this.rafraichissement);
+                intent.putExtra("id",id);
+                startActivity(intent);
+                return true;
+            }
+            case R.id.admin:{
+                Intent intent=new Intent(this, AdminActivity.class);
                 intent.putExtra("user",username);
                 intent.putExtra("raf",this.rafraichissement);
                 intent.putExtra("id",id);

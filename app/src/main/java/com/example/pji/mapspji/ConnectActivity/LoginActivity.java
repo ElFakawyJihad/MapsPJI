@@ -164,6 +164,10 @@ public class LoginActivity extends AppCompatActivity {
         return password.length() > 4;
     }
 
+    //On bloque le bouton de Retour
+    public void onBackPressed() {
+        // do nothing.
+    }
 
     /**
      * Represents an asynchronous login/registration task used to authenticate

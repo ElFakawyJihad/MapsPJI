@@ -56,11 +56,12 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".optionActivity.OptionActivity" />
         <activity android:name=".optionActivity.SubscriptionGroupActivity" />
-        <activity android:name=".optionActivity.UnsubscribeGroupActivity"></activity>
+        <activity android:name=".optionActivity.UnsubscribeGroupActivity" />
         <activity
             android:name=".GroupActivity.ConfirmUnsubscribeGroupActivity"
             android:label="@string/title_activity_confirm_unsubscribe_group"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".optionActivity.AdminActivity"></activity>
     </application>
 
 </manifest>
